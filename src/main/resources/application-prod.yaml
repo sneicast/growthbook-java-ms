@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: feature-flags
+
+# GrowthBook Production Configuration
+# All values should come from environment variables
+growthbook:
+  enabled: ${GROWTHBOOK_ENABLED:true}
+  api-host: ${GROWTHBOOK_API_HOST}
+  client-key: ${GROWTHBOOK_CLIENT_KEY}
+  cache:
+    # Set to false to disable automatic refresh (use webhook instead)
+    enabled: ${GROWTHBOOK_CACHE_ENABLED:true}
+    # 5 minutes for production (300s), or increase to 600s (10min) for less load
+    ttl-seconds: ${GROWTHBOOK_CACHE_TTL:300}
+
+# Logging
+logging:
+  level:
+    dev.scastillo.feature_flags: INFO
+    growthbook: WARN
+

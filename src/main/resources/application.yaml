@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: feature-flags
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+# GrowthBook Configuration
+growthbook:
+  enabled: ${GROWTHBOOK_ENABLED:true}
+  api-host: ${GROWTHBOOK_API_HOST:http://localhost:3100}
+  client-key: ${GROWTHBOOK_CLIENT_KEY:sdk-KBHRJV9d3Bai4BpP}
+  cache:
+    enabled: ${GROWTHBOOK_CACHE_ENABLED:false}
+    ttl-seconds: ${GROWTHBOOK_CACHE_TTL:60}
+  webhook:
+    # Optional: Set a secret to validate incoming webhooks from GrowthBook
+    secret: ${GROWTHBOOK_WEBHOOK_SECRET:123456}
+
+# Logging
+logging:
+  level:
+    dev.scastillo.feature_flags: DEBUG
+    growthbook: DEBUG
